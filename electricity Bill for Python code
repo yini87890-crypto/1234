@@ -1,0 +1,39 @@
+def calculate_bill(units):
+    if units <= 100:
+        bill = units * 1.5
+    elif units <= 200:
+        bill = (100 * 1.5) + (units - 100) * 2.5
+    elif units <= 300:
+        bill = (100 * 1.5) + (100 * 2.5) + (units - 200) * 4
+    else:
+        bill = (100 * 1.5) + (100 * 2.5) + (100 * 4) + (units - 300) * 6
+    
+    # Fixed meter charge
+    fixed_charge = 100
+    total_bill = bill + fixed_charge
+    
+    return total_bill
+
+
+def main():
+    print("=== Electricity Bill Calculator ===")
+    
+    try:
+        units = float(input("Enter number of units consumed: "))
+        
+        if units < 0:
+            print("Units cannot be negative.")
+            return
+        
+        total_amount = calculate_bill(units)
+        
+        print("\n--- Bill Details ---")
+        print(f"Units Consumed: {units}")
+        print(f"Total Bill Amount: ₹{total_amount:.2f}")
+    
+    except ValueError:
+        print("Please enter a valid number.")
+
+
+if __name__ == "__main__":
+    main()****
